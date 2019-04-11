@@ -67,7 +67,7 @@ module Selenium
           custom_caps['ignoreProtectedModeSettings'] = true
 
           expect(http).to receive(:call) do |_, _, payload|
-            expect(payload[:desiredCapabilities]['ignoreProtectedModeSettings']).to be true
+            expect(payload[:capabilities][:firstMatch][0]['ignoreProtectedModeSettings']).to be true
             resp
           end
 
@@ -79,7 +79,7 @@ module Selenium
           custom_caps['ignoreProtectedModeSettings'] = false
 
           expect(http).to receive(:call) do |_, _, payload|
-            expect(payload[:desiredCapabilities][:ignore_protected_mode_settings]).to be true
+            expect(payload[:capabilities][:firstMatch][0][:ignore_protected_mode_settings]).to be true
             resp
           end
 
